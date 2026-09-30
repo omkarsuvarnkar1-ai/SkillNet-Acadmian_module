@@ -1,0 +1,1320 @@
+/* =========================================================
+   SKILLNET DASHBOARD DESIGN SYSTEM
+   Navy / Cyan Theme + Dark Mode Support
+========================================================= */
+
+:root {
+  --sk-navy-950: #020617;
+  --sk-navy-900: #06112b;
+  --sk-navy-850: #081735;
+  --sk-navy-800: #0b1d43;
+  --sk-navy-700: #102b5c;
+
+  --sk-blue-700: #0756d9;
+  --sk-blue-600: #0b6cff;
+  --sk-blue-500: #1683ff;
+  --sk-cyan-500: #19c8ff;
+
+  --sk-white: #ffffff;
+  --sk-bg: #f4f8ff;
+  --sk-bg-card: #ffffff;
+  --sk-bg-soft: #eef5ff;
+
+  --sk-text: #07152f;
+  --sk-text-secondary: #52627a;
+  --sk-text-muted: #7c8ba1;
+
+  --sk-border: #dce7f5;
+  --sk-border-blue: #bcd5f7;
+
+  --sk-success: #16a66a;
+  --sk-warning: #f59e0b;
+  --sk-danger: #e5484d;
+
+  --sk-radius-sm: 10px;
+  --sk-radius-md: 16px;
+  --sk-radius-lg: 22px;
+
+  --sk-shadow-sm: 0 4px 14px rgba(7, 28, 65, 0.06);
+  --sk-shadow-md: 0 10px 30px rgba(7, 28, 65, 0.09);
+  --sk-shadow-blue: 0 10px 30px rgba(11, 108, 255, 0.16);
+
+  --sk-transition: 180ms ease;
+}
+
+/* Dark theme overrides */
+html.dark-theme {
+  --sk-bg: #090e1a;
+  --sk-bg-card: #111827;
+  --sk-bg-soft: #1e293b;
+
+  --sk-text: #f1f5f9;
+  --sk-text-secondary: #94a3b8;
+  --sk-text-muted: #64748b;
+
+  --sk-border: #1e293b;
+  --sk-border-blue: #2563eb;
+
+  --sk-shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --sk-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: "DM Sans", Inter, system-ui, -apple-system, sans-serif;
+  background-color: var(--sk-bg);
+  color: var(--sk-text);
+  transition: background-color var(--sk-transition), color var(--sk-transition);
+}
+
+/* =========================================================
+   APPLICATION LAYOUT
+========================================================= */
+.skillnet-dashboard {
+  min-height: 100vh;
+}
+
+.skillnet-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.skillnet-sidebar {
+  width: 260px;
+  min-width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--sk-navy-950) 0%, var(--sk-navy-900) 55%, var(--sk-navy-850) 100%);
+  color: var(--sk-white);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  box-shadow: 8px 0 30px rgba(2, 6, 23, 0.12);
+  z-index: 20;
+}
+
+.skillnet-brand {
+  padding: 6px 12px 24px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.skillnet-brand .skill {
+  color: #ffffff;
+}
+
+.skillnet-brand .net {
+  color: var(--sk-cyan-500);
+}
+
+.skillnet-badge-pill {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(25, 200, 255, 0.15);
+  color: var(--sk-cyan-500);
+  border: 1px solid rgba(25, 200, 255, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* NAVIGATION */
+.skillnet-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.skillnet-nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: #b9c7dd;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.skillnet-nav-item:hover {
+  color: #ffffff;
+  background: rgba(22, 131, 255, 0.12);
+  border-color: rgba(25, 200, 255, 0.15);
+  transform: translateX(2px);
+}
+
+.skillnet-nav-item.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(11, 108, 255, 0.95), rgba(25, 200, 255, 0.85));
+  box-shadow: 0 8px 22px rgba(11, 108, 255, 0.28);
+}
+
+.skillnet-nav-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillnet-nav-badge {
+  margin-left: auto;
+  background: var(--sk-danger);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.skillnet-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* MAIN AREA */
+.skillnet-main {
+  flex: 1;
+  min-width: 0;
+  background: var(--sk-bg);
+  padding: 30px 36px 50px;
+  position: relative;
+}
+
+/* HEADER */
+.skillnet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.skillnet-eyebrow {
+  margin: 0 0 6px;
+  color: var(--sk-blue-600);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.skillnet-header-left h1 {
+  margin: 0;
+  color: var(--sk-text);
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.skillnet-header-left p {
+  margin: 6px 0 0;
+  color: var(--sk-text-secondary);
+  font-size: 14px;
+}
+
+.skillnet-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.skillnet-icon-button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 12px;
+  color: var(--sk-text);
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  transition: var(--sk-transition);
+}
+
+.skillnet-icon-button:hover {
+  border-color: var(--sk-border-blue);
+  box-shadow: var(--sk-shadow-sm);
+}
+
+.skillnet-notification-dot {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  background: var(--sk-danger);
+  border: 2px solid var(--sk-bg-card);
+}
+
+.skillnet-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px 6px 6px;
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.skillnet-profile:hover {
+  border-color: var(--sk-border-blue);
+  box-shadow: var(--sk-shadow-sm);
+}
+
+.skillnet-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sk-blue-600), var(--sk-cyan-500));
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.skillnet-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sk-blue-600), var(--sk-blue-700));
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.skillnet-avatar-lg {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--sk-blue-600), var(--sk-cyan-500));
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.skillnet-profile-meta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.skillnet-profile-name {
+  color: var(--sk-text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.skillnet-profile-role {
+  color: var(--sk-text-muted);
+  font-size: 11px;
+}
+
+/* =========================================================
+   WELCOME BANNER
+========================================================= */
+.skillnet-welcome {
+  position: relative;
+  overflow: hidden;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  border-radius: var(--sk-radius-lg);
+  color: #ffffff;
+  background: linear-gradient(115deg, var(--sk-navy-950) 0%, var(--sk-navy-850) 60%, #0b4db6 100%);
+  box-shadow: var(--sk-shadow-blue);
+}
+
+.skillnet-welcome h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.skillnet-welcome p {
+  max-width: 680px;
+  margin: 8px 0 0;
+  color: #c9d8ef;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.skillnet-welcome-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.skillnet-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--sk-transition), box-shadow var(--sk-transition), background var(--sk-transition);
+}
+
+.skillnet-btn-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--sk-blue-600), var(--sk-cyan-500));
+  box-shadow: 0 6px 16px rgba(11, 108, 255, 0.22);
+}
+
+.skillnet-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(11, 108, 255, 0.32);
+}
+
+.skillnet-btn-secondary {
+  color: var(--sk-blue-600);
+  background: var(--sk-bg-card);
+  border-color: var(--sk-border-blue);
+}
+
+html.dark-theme .skillnet-btn-secondary {
+  color: var(--sk-cyan-500);
+}
+
+.skillnet-btn-secondary:hover {
+  background: var(--sk-bg-soft);
+}
+
+.skillnet-btn-ghost {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.skillnet-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.skillnet-btn-small {
+  min-height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+/* STATS GRID */
+.skillnet-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.skillnet-stat-card {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: var(--sk-radius-md);
+  padding: 20px;
+  box-shadow: var(--sk-shadow-sm);
+  transition: transform var(--sk-transition), box-shadow var(--sk-transition);
+}
+
+.skillnet-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sk-shadow-md);
+}
+
+.skillnet-stat-card.highlight {
+  border-color: var(--sk-border-blue);
+  background: linear-gradient(180deg, var(--sk-bg-card) 0%, var(--sk-bg-soft) 100%);
+}
+
+.skillnet-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skillnet-stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 18px;
+  background: var(--sk-bg-soft);
+}
+
+.skillnet-stat-kicker {
+  color: var(--sk-text-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.skillnet-stat-label {
+  margin-top: 14px;
+  color: var(--sk-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.skillnet-stat-value {
+  margin-top: 4px;
+  color: var(--sk-text);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.skillnet-stat-change {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sk-text-muted);
+}
+
+.skillnet-stat-change.urgent {
+  color: var(--sk-warning);
+}
+
+.skillnet-stat-change.positive {
+  color: var(--sk-success);
+}
+
+/* CONTENT GRID */
+.skillnet-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.skillnet-card {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: var(--sk-radius-lg);
+  padding: 24px;
+  box-shadow: var(--sk-shadow-sm);
+}
+
+.skillnet-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.skillnet-card-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.skillnet-text-button {
+  border: 0;
+  padding: 4px;
+  color: var(--sk-blue-600);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+html.dark-theme .skillnet-text-button {
+  color: var(--sk-cyan-500);
+}
+
+.skillnet-text-button:hover {
+  text-decoration: underline;
+}
+
+.skillnet-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skillnet-activity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--sk-bg-soft);
+  border: 1px solid var(--sk-border);
+}
+
+.skillnet-activity-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.skillnet-activity-copy h3 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--sk-text);
+}
+
+.skillnet-activity-copy p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--sk-text-muted);
+}
+
+.skillnet-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skillnet-info-item {
+  padding: 12px 14px;
+  background: var(--sk-bg-soft);
+  border: 1px solid var(--sk-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skillnet-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sk-text-muted);
+  text-transform: uppercase;
+}
+
+.skillnet-info-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sk-text);
+}
+
+/* =========================================================
+   TOOLBAR & FILTERS
+========================================================= */
+.skillnet-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.skillnet-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.skillnet-search-wrapper {
+  position: relative;
+  min-width: 260px;
+  flex: 1;
+  max-width: 380px;
+}
+
+.skillnet-search-wrapper .search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--sk-text-muted);
+}
+
+.skillnet-search {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px 0 36px;
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 11px;
+  color: var(--sk-text);
+  outline: none;
+  font-size: 13px;
+  transition: var(--sk-transition);
+}
+
+.skillnet-search:focus {
+  border-color: var(--sk-blue-500);
+  box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.12);
+}
+
+.skillnet-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--sk-bg-card);
+  padding: 4px;
+  border: 1px solid var(--sk-border);
+  border-radius: 12px;
+}
+
+.skillnet-tab {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--sk-text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.skillnet-tab:hover {
+  color: var(--sk-text);
+}
+
+.skillnet-tab.active {
+  background: var(--sk-blue-600);
+  color: #ffffff;
+}
+
+/* =========================================================
+   TABLES
+========================================================= */
+.skillnet-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--sk-border);
+  border-radius: 16px;
+  background: var(--sk-bg-card);
+  box-shadow: var(--sk-shadow-sm);
+}
+
+.skillnet-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.skillnet-table th {
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--sk-text-muted);
+  background: var(--sk-bg-soft);
+  border-bottom: 1px solid var(--sk-border);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skillnet-table td {
+  padding: 16px 18px;
+  color: var(--sk-text);
+  border-bottom: 1px solid var(--sk-border);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.skillnet-table tbody tr:hover {
+  background: var(--sk-bg-soft);
+}
+
+.skillnet-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-email {
+  font-size: 11px;
+  color: var(--sk-text-muted);
+}
+
+.skillnet-tag-neutral {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--sk-bg-soft);
+  color: var(--sk-text-secondary);
+}
+
+.skillnet-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.skillnet-status-active {
+  color: #08784c;
+  background: #e7f8f0;
+}
+
+.skillnet-status-pending {
+  color: #9a6500;
+  background: #fff5dc;
+}
+
+.skillnet-status-closed {
+  color: #a12a30;
+  background: #ffeaeb;
+}
+
+/* =========================================================
+   OPPORTUNITIES GRID
+========================================================= */
+.skillnet-opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.skillnet-opportunity-card {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--sk-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform var(--sk-transition), border-color var(--sk-transition);
+}
+
+.skillnet-opportunity-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sk-border-blue);
+}
+
+.skillnet-opp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skillnet-tag-category {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--sk-blue-600);
+  background: var(--sk-bg-soft);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.skillnet-opp-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--sk-text);
+}
+
+.skillnet-opp-partner {
+  margin: 0;
+  font-size: 13px;
+  color: var(--sk-text-secondary);
+}
+
+.skillnet-opp-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--sk-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.skillnet-opp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--sk-text-muted);
+}
+
+.skillnet-opp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skillnet-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--sk-bg-soft);
+  color: var(--sk-blue-600);
+}
+
+html.dark-theme .skillnet-tag {
+  color: var(--sk-cyan-500);
+}
+
+/* =========================================================
+   PROGRESS BARS & SKILL MATRIX
+========================================================= */
+.skillnet-progress-bar-wrap {
+  width: 120px;
+  height: 8px;
+  background: var(--sk-bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.skillnet-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sk-blue-600), var(--sk-cyan-500));
+  border-radius: 999px;
+}
+
+.progress-val {
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 8px;
+  color: var(--sk-text-secondary);
+}
+
+.skillnet-tags-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.skillnet-badge-gold {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #fff8e6;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+/* =========================================================
+   NOTIFICATIONS DRAWER
+========================================================= */
+.skillnet-notifications-drawer {
+  position: absolute;
+  top: 80px;
+  right: 36px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 16px;
+  box-shadow: var(--sk-shadow-md);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.drawer-header {
+  padding: 14px 18px;
+  background: var(--sk-bg-soft);
+  border-bottom: 1px solid var(--sk-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-body {
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.notif-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--sk-border);
+  cursor: pointer;
+  transition: var(--sk-transition);
+}
+
+.notif-item:hover {
+  background: var(--sk-bg-soft);
+}
+
+.notif-item.unread {
+  background: rgba(22, 131, 255, 0.05);
+}
+
+.notif-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.notif-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--sk-blue-600);
+}
+
+.notif-time {
+  font-size: 11px;
+  color: var(--sk-text-muted);
+}
+
+.notif-msg {
+  margin: 0;
+  font-size: 12px;
+  color: var(--sk-text-secondary);
+}
+
+/* =========================================================
+   MODAL DIALOGS
+========================================================= */
+.skillnet-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  animation: fadeIn 150ms ease-out;
+}
+
+.skillnet-modal-card {
+  width: min(640px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--sk-shadow-md);
+  position: relative;
+}
+
+.skillnet-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 0;
+  background: var(--sk-bg-soft);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sk-text-muted);
+  font-weight: bold;
+}
+
+.modal-header h2 {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.modal-subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--sk-text-secondary);
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+/* FORMS IN MODALS */
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sk-text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 10px;
+  color: var(--sk-text);
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sk-blue-500);
+  box-shadow: 0 0 0 3px rgba(22, 131, 255, 0.12);
+}
+
+.rubric-grid {
+  background: var(--sk-bg-soft);
+  border: 1px solid var(--sk-border);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.rubric-grid h4 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--sk-text);
+}
+
+.rubric-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.rubric-item input {
+  width: 70px;
+  padding: 6px 10px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sk-border);
+}
+
+.submission-info-box,
+.opp-detail-box {
+  background: var(--sk-bg-soft);
+  border: 1px solid var(--sk-border);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.submission-info-box p,
+.opp-detail-box p {
+  margin: 4px 0;
+}
+
+.rec-student-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--sk-border);
+}
+
+.skill-matrix-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.skill-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.skill-bar-row span {
+  width: 180px;
+  color: var(--sk-text-secondary);
+}
+
+.bar-outer {
+  flex: 1;
+  height: 10px;
+  background: var(--sk-bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sk-blue-600), var(--sk-cyan-500));
+}
+
+/* =========================================================
+   TOAST NOTIFICATIONS
+========================================================= */
+.skillnet-toast-region {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skillnet-toast {
+  padding: 12px 18px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: var(--sk-navy-950);
+  box-shadow: var(--sk-shadow-md);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toastIn 180ms ease-out;
+}
+
+.skillnet-toast.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.skillnet-toast-success {
+  border-left: 4px solid var(--sk-success);
+}
+
+.skillnet-toast-warning {
+  border-left: 4px solid var(--sk-warning);
+}
+
+.skillnet-toast-error {
+  border-left: 4px solid var(--sk-danger);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes toastIn {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .skillnet-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skillnet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .skillnet-layout {
+    flex-direction: column;
+  }
+
+  .skillnet-sidebar {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    padding: 16px;
+  }
+
+  .skillnet-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .skillnet-nav-item {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .skillnet-main {
+    padding: 20px 16px 40px;
+  }
+
+  .skillnet-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skillnet-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-row {
+    grid-template-columns: 1fr;
+  }
+
+  .skillnet-notifications-drawer {
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
